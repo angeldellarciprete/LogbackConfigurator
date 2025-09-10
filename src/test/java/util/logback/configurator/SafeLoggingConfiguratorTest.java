@@ -1,14 +1,20 @@
 package util.logback.configurator;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class SafeLoggingConfiguratorTest
+class SafeLoggingConfiguratorTest
 {
+	private static Logger logger = LoggerFactory.getLogger(SafeLoggingConfiguratorTest.class);
+	
 	@Test
-	void testAdd()
+	void test()
 	{
-		assertEquals(5, SafeLoggingConfigurator.add(2, 3), "2 + 3 should equal 5");
+		logger.info("before SafeLoggingConfigurator.configure()");
+		
+		SafeLoggingConfigurator.configure("pc");
+		
+		logger.info("after SafeLoggingConfigurator.configure()");
 	}
 }

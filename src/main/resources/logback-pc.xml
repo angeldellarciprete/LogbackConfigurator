@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true"
+	scanPeriod="30 seconds"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="logback.xsd">
+<!--
+  ______________________________________________________
+ |level of  |         effective level q                 |
+ |request p |___________________________________________|
+ |          | TRACE | DEBUG | INFO | WARN | ERROR | OFF |
+ |__________|_______|_______|______|______|_______|_____|
+ |TRACE     | YES   | NO    | NO   | NO   | NO    | NO  |
+ |__________|_______|_______|______|______|_______|_____|
+ |DEBUG     | YES   | YES   | NO   | NO   | NO    | NO  |
+ |__________|_______|_______|______|______|_______|_____|
+ |INFO      | YES   | YES   | YES  | NO   | NO    | NO  |
+ |__________|_______|_______|______|______|_______|_____|
+ |WARN      | YES   | YES   | YES  | YES  | NO    | NO  |
+ |__________|_______|_______|______|______|_______|_____|
+ |ERROR     | YES   | YES   | YES  | YES  | YES   | NO  |
+ |__________|_______|_______|______|______|_______|_____|
+
+-->
+
+	<appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- roll over daily -->
+			<fileNamePattern>/Data/log/app-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 100MB -->
+				<maxFileSize>1MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d|APPpc|%-20thread|%-5level|%logger{36}:%method:%line|%msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="util.logback" level="TRACE" additivity="false">
+		<appender-ref ref="ROLLING" />
+	</logger>
+
+	<root level="OFF" />
+
+</configuration>

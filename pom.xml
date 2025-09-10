@@ -16,8 +16,8 @@
 		<maven.compiler.source>8</maven.compiler.source>
 		<maven.compiler.target>8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<slf4j.version>2.0.13</slf4j.version>
-		<logback.version>1.5.6</logback.version>
+		<slf4j.version>1.7.36</slf4j.version>
+		<logback.version>1.2.13</logback.version>
 	</properties>
 
 	<dependencies>
@@ -70,7 +70,8 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.outputDirectory}</outputDirectory><!-- /sources -->
+							<outputDirectory>${project.build.outputDirectory}</outputDirectory><!--
+							/sources -->
 							<resources>
 								<resource>
 									<directory>${basedir}/src/main/java</directory>
@@ -83,18 +84,18 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<!-- Disable META-INF/maven -->
 			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.3.0</version>
-                <configuration>
-                    <archive>
-                        <addMavenDescriptor>false</addMavenDescriptor>
-                    </archive>
-                </configuration>
-            </plugin>			
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+					</archive>
+				</configuration>
+			</plugin>
 
 
 			<!-- Surefire plugin for running tests -->

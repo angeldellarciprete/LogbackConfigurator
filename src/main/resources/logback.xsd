@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<!--
+		NOTE:	LOGBACK has no XSD!
+		
+		This XSD is just here to avoid the Eclipse validation warning.  
+	 -->
+	<xs:element name="configuration"/>
+</xs:schema>
